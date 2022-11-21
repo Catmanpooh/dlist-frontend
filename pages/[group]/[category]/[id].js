@@ -64,7 +64,7 @@ const CategoryWithId = () => {
     // Same issue as in the post page
     let item = await wallet.callMethod({
       method: "remove_items",
-      args: { group: group, account_id: wallet.accountId, post_id: Number(id) },
+      args: { group: group === "jobs" ? "job" : group, account_id: wallet.accountId, post_id: Number(id) },
       contractId,
     });
 
