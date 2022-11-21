@@ -22,7 +22,7 @@ const CategoryWithId = () => {
   const getItemByPostId = async () => {
     let item = await wallet.viewMethod({
       method: "get_item",
-      args: { group: group, post_id: Number(id) },
+      args: { group: group === "jobs" ? "job" : group, post_id: Number(id) },
       contractId,
     });
 
@@ -76,7 +76,6 @@ const CategoryWithId = () => {
     setIsDisabled(false);
   };
 
-  console.log(getItemInfo);
   return (
     <Layout>
       <div className="flex flex-col justify-center items-center mt-4">

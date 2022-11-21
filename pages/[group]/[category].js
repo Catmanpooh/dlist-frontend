@@ -21,9 +21,11 @@ const GroupCategory = () => {
   const getItems = async () => {
     let items = await wallet.viewMethod({
       method: "get_items",
-      args: { group: group },
+      args: { group: group === "jobs" ? "job" : group },
       contractId,
     });
+
+    console.log(items);
 
     let filtered = items.filter((item) => item.category === category);
 
@@ -53,7 +55,7 @@ const GroupCategory = () => {
                   {item.title}
                 </Link>
                 <div className="w-24">
-                {item.location ? <p>{item.location}</p> : <p></p>}
+                  {item.location ? <p>{item.location}</p> : <p></p>}
                 </div>
               </div>
             );
